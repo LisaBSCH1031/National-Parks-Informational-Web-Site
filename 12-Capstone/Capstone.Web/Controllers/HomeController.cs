@@ -12,9 +12,11 @@ namespace Capstone.Web.Controllers
     public class HomeController : Controller
     {
         private IParksDAO parksDAO;
-        public HomeController(IParksDAO parksDAO)
+        private IWeatherDAO weatherDAO;
+        public HomeController(IParksDAO parksDAO, IWeatherDAO weatherDAO)
         {
             this.parksDAO = parksDAO;
+            this.weatherDAO = weatherDAO;
         }
         public IActionResult Index()
         {
@@ -22,10 +24,14 @@ namespace Capstone.Web.Controllers
             return View(park);
         }
 
-        public IActionResult Detail(string id)
+        public IActionResult Detail(string id, ParkWeatherVM vm)
         {
-            Park park = parksDAO.GetPark(id);
-            return View(park);
+            //Park park = parksDAO.GetPark(id);
+            //Weather wthr = weatherDAO.GetWeather(id);
+            vm.park = parksDAO.GetPark(id);
+            vm.weather = weatherDAO.GetWeather(id);
+            vm.weatherDays = weatherDAO.GetWeatherDays(id);
+            return View(vm);
         }
 
       

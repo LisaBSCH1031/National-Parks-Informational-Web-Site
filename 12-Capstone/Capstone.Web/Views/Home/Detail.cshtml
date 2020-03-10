@@ -1,12 +1,12 @@
-﻿@model Park
+﻿@model ParkWeatherVM
 @{
     ViewData["Title"] = "Detail";
 }
 
-<h2>@Model.ParkName @Model.State</h2>
-<img src="~/images/@(Model.ParkCode).jpg" />
-<h4>@Model.InspirationalQuote by:@Model.InspirationalQuoteSource</h4>
-<p>@Model.ParkDescription</p>
+<h2>@Model.park.ParkName @Model.park.State</h2>
+<img src="~/images/@(Model.park.ParkCode).jpg" />
+<h4>@Model.park.InspirationalQuote by:@Model.park.InspirationalQuoteSource</h4>
+<p>@Model.park.ParkDescription</p>
 <table>
     <thead>
         <tr>
@@ -20,15 +20,23 @@
         </tr>
     </thead>
     <tr>
-        <td>@Model.ElevationInFeet</td>
-        <td>@Model.MilesOfTrail</td>
-        <td>@Model.ElevationInFeet</td>
-        <td>@Model.Climate</td>
-        <td>@Model.YearFounded</td>
-        <td>@Model.AnnualVisitorCount</td>
-        <td>@Model.NumberOfAnimalSpecies</td>
-        <td>@Model.EntryFee</td>
+        <td>@Model.park.ElevationInFeet</td>
+        <td>@Model.park.MilesOfTrail</td>
+        <td>@Model.park.ElevationInFeet</td>
+        <td>@Model.park.Climate</td>
+        <td>@Model.park.YearFounded</td>
+        <td>@Model.park.AnnualVisitorCount</td>
+        <td>@Model.park.NumberOfAnimalSpecies</td>
+        <td>@Model.park.EntryFee</td>
     </tr>
+    @foreach(Weather wthr in Model.weatherDays)
+    {
+        <tr>
+            <td>@wthr.Low</td>
+            <td>@wthr.High</td>
+            <td>@wthr.Forecast</td>
+        </tr>
+    }
 </table>
 
 
