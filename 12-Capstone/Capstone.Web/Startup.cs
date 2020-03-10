@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Capstone.Web.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -19,6 +20,7 @@ namespace Capstone.Web
         }
 
         public IConfiguration Configuration { get; }
+        public string connectionString;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -31,6 +33,9 @@ namespace Capstone.Web
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            connectionString = Configuration.GetConnectionString("NPS");
+
+            services.AddTransient<IParksDAO, ParksSqlDAO>((x) => new ParksSqlDAO(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
