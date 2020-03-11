@@ -47,11 +47,11 @@
 
             @if (wthr.Forecast == "partly cloudy")
             {
-                <div class="tablecell"> <img class="weatherIMG" src="~/images/partlycloudy.png" /></div>
+                <div class="tablecell"> <img class="weatherIMG" src="~/images/partlycloudy.png" /><p>@WeatherMessages.GetWeatherMessage(wthr.Forecast, wthr.High, wthr.Low)</p></div>
             }
             else
             {
-                <div class="tablecell"> <img class="weatherIMG" src="~/images/@(wthr.Forecast).png" /></div>
+                <div class="tablecell"> <img class="weatherIMG" src="~/images/@(wthr.Forecast).png" /><p>@WeatherMessages.GetWeatherMessage(wthr.Forecast, wthr.High, wthr.Low)</p></div>
             }
 
 
