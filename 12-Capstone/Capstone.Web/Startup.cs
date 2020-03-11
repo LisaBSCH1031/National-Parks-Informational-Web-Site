@@ -37,6 +37,8 @@ namespace Capstone.Web
 
             services.AddTransient<IParksDAO, ParksSqlDAO>((x) => new ParksSqlDAO(connectionString));
             services.AddTransient<IWeatherDAO, WeatherSqlDAO>((x) => new WeatherSqlDAO(connectionString));
+            services.AddTransient<ISurveyResultDAO, SurveyResultSqlDAO>((x) => new SurveyResultSqlDAO(connectionString));
+
 
         }
 
