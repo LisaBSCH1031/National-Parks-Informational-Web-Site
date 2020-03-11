@@ -1,8 +1,32 @@
-﻿
+﻿@model ParkSurveyVM
 @{
     ViewData["Title"] = "Index";
 }
 
 <h2>Survey</h2>
 
+<h2>Thank you for completing this National Park System's Survey</h2>
+<p>In order to surve you better, we ask all web goers to compleate this simple survey.  We then sell your information to the highest bidder to help fund the National Parks system.  Thank you for your partisipation and patronage.</p>
 
+<form asp-controller="Survey" asp-action="NewSurvey" method="post">
+    <div class="table">
+        <div class="surveyQ"><label asp-for="FavPark">Favorite National Park</label></div>
+        <div class="surveyA">
+            <select id="FavPark">
+                @foreach (Park park in Model)
+                {
+                    <option value="@park.ParkName">@park.ParkName></option>
+                }
+            </select>
+        </div>
+        <div class="surveyQ"><label asp-for="Email">Your Email</label></div>
+        <div class="surveyA"><input type="text" asp-for="Email" /></div>
+        
+        <div class="surveyQ"><label asp-for="StateOfRes"></label></div>
+        <div class="surveyA">
+            <select id="StateofRes">
+                <option value="OH"></option>
+            </select>
+        </div>
+    </div>
+</form>
