@@ -2,12 +2,20 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-@foreach (Park park in Model)
-{
     <section>
-        <a asp-controller="Home" asp-action="Detail" asp-route-id="@park.ParkCode"><img src="~/images/@(park.ParkCode).jpg" /></a>
-        <div>@park.ParkName.</div>
-        <div>@park.ParkDescription</div>
+        <h1 class="title">National Park System</h1>
+        @foreach (Park park in Model)
+        {
+
+            <div class="row">
+                <div class="column left">
+                    <a asp-controller="Home" asp-action="Detail" asp-route-id="@park.ParkCode"><img class="homeIMG" src="~/images/@(park.ParkCode).jpg" /></a>
+                </div>
+                <div class="column right">
+                    <h3 class="parkName">@park.ParkName.</h3>
+                    <h4>@park.ParkDescription</h4>
+                </div>
+            </div>
+
+        }
     </section>
-}
