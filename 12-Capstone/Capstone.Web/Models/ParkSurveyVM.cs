@@ -14,5 +14,6 @@ namespace Capstone.Web.Models
         public Survey survey { get; set; }
         public IList<Park> parks { get; set; }
         public IList<Survey> surveys { get; set; }
+        public IList<Survey> parkSurveys { get; set; }
     }
 }

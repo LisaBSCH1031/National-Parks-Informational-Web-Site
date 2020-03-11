@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Capstone.Web.DAL;
@@ -34,7 +35,8 @@ namespace Capstone.Web.Controllers
                 return View();
             }
             surveyResultDAO.AddSurvey(vm);
-            return NotFound();
+            return RedirectToAction("Index");
         }
+
     }
 }

@@ -14,35 +14,6 @@ namespace Capstone.Web.DAL
         {
             this.connectionString = connectionString;
         }
-        public IList<Survey> GetSurveys(string id)
-        {
-            List<Survey> output = new List<Survey>();
-
-            Survey surv = null;
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    string sql = "select * from dbo.survey_result where parkcode = @id ";
-
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        surv = RowToObject(reader);
-                        output.Add(surv);
-                    }
-                }
-            }
-            catch
-            {
-                throw;
-            }
-            return output;
-        }
-
 
         private Survey RowToObject(SqlDataReader reader)
         {
@@ -56,6 +27,7 @@ namespace Capstone.Web.DAL
             };
             return surv;
         }
+
 
         public void AddSurvey(ParkSurveyVM parkSurveyVM)
         {
