@@ -15,17 +15,49 @@ namespace Capstone.Web.DAL
             this.connectionString = connectionString;
         }
 
-        private Survey RowToObject(SqlDataReader reader)
+        public IList<SurveyResultVM> GetAllParkNamesWithSurvey ()
         {
-            Survey surv = new Survey()
+            List<SurveyResultVM> parks = new List<SurveyResultVM>();
+            try
             {
-                SurveyID = Convert.ToInt32(reader["surveyID"]),
-                ParkCode = Convert.ToString(reader["parkCode"]),
-                EmailAddress = Convert.ToString(reader["emailAddress"]),
-                State = Convert.ToString(reader["state"]),
-                ActivityLevel = Convert.ToString(reader["activityLevel"]),
+                // Create a new connection object
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    // Open the connection
+                    conn.Open();
+
+                    string sql = @"select survey_result.parkcode, parkname, count(survey_result.parkcode) as Count from survey_result
+join park on park.parkcode = survey_result.parkcode group by survey_result.parkCode, parkname";
+
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+
+                    // Execute the command
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    // Loop through each row
+                    while (reader.Read())
+                    {
+                        SurveyResultVM vm = RowToObject1(reader);
+                        parks.Add(vm);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return parks;
+        }
+        private SurveyResultVM RowToObject1(SqlDataReader reader)
+        {
+            SurveyResultVM vm = new SurveyResultVM()
+            {
+                ParkCode = Convert.ToString(reader["parkcode"]),
+                ParkName = Convert.ToString(reader["parkname"]),
+                CountOfSurveys = Convert.ToInt32(reader["Count"]),
             };
-            return surv;
+            return vm;
         }
 
 
@@ -60,7 +92,18 @@ VALUES (@parkCode, @emailAddress, @state, @activityLevel)";
                 throw;
             }
             return;
-
+        }
+        private Survey RowToObject(SqlDataReader reader)
+        {
+            Survey surv = new Survey()
+            {
+                SurveyID = Convert.ToInt32(reader["surveyID"]),
+                ParkCode = Convert.ToString(reader["parkCode"]),
+                EmailAddress = Convert.ToString(reader["emailAddress"]),
+                State = Convert.ToString(reader["state"]),
+                ActivityLevel = Convert.ToString(reader["activityLevel"]),
+            };
+            return surv;
         }
     }
 }

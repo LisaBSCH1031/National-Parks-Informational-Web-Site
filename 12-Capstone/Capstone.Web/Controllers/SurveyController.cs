@@ -35,7 +35,12 @@ namespace Capstone.Web.Controllers
                 return View();
             }
             surveyResultDAO.AddSurvey(vm);
-            return RedirectToAction("Index");
+            return RedirectToAction("GetSurveyResults");
+        }
+        public IActionResult GetSurveyResults()
+        {
+            IList<SurveyResultVM> list = surveyResultDAO.GetAllParkNamesWithSurvey();
+            return View(list);
         }
 
     }

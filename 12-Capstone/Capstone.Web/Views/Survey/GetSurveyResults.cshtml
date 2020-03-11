@@ -1,0 +1,11 @@
+﻿@model IList<SurveyResultVM>
+@{
+    ViewData["Title"] = "GetSurveyResults";
+}
+
+<h2>GetSurveyResults</h2>
+
+@foreach(SurveyResultVM vm in Model)
+{
+    <h2>@vm.ParkName - @vm.CountOfSurveys surveys</h2>
+}

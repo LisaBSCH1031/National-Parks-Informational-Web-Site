@@ -9,5 +9,6 @@ namespace Capstone.Web.DAL
     public interface ISurveyResultDAO
     {
         void AddSurvey(ParkSurveyVM parkSurveyVM);
+        IList<SurveyResultVM> GetAllParkNamesWithSurvey();
     }
 }
