@@ -8,6 +8,6 @@ namespace Capstone.Web.DAL
 {
     public interface ISurveyResultDAO
     {
-        bool AddSurvey(Survey survey);
+        bool AddSurvey(ParkSurveyVM parkSurveyVM);
     }
 }

@@ -8,25 +8,92 @@
 <h2>Thank you for completing this National Park System's Survey</h2>
 <p>In order to surve you better, we ask all web goers to compleate this simple survey.  We then sell your information to the highest bidder to help fund the National Parks system.  Thank you for your partisipation and patronage.</p>
 
-<form asp-controller="Survey" asp-action="NewSurvey" method="post">
+<form asp-controller="Survey" asp-action="Index" method="post">
     <div class="table">
-        <div class="surveyQ"><label asp-for="FavPark">Favorite National Park</label></div>
+        <div class="surveyQ"><label asp-for="@Model.Favpark">Favorite National Park</label></div>
         <div class="surveyA">
             <select id="FavPark">
-                @foreach (Park park in Model)
+                @foreach (Park park in Model.parks)
                 {
-                    <option value="@park.ParkName">@park.ParkName></option>
+                    <option value="@park.ParkName">@park.ParkName</option>
                 }
             </select>
         </div>
-        <div class="surveyQ"><label asp-for="Email">Your Email</label></div>
-        <div class="surveyA"><input type="text" asp-for="Email" /></div>
-        
-        <div class="surveyQ"><label asp-for="StateOfRes"></label></div>
+        <div class="surveyQ"><label asp-for="@Model.survey.EmailAddress">Your Email</label></div>
+        <div class="surveyA"><input type="text" asp-for="@Model.survey.EmailAddress" /></div>
+
+        <div class="surveyQ"><label asp-for="@Model.survey.State"></label></div>
         <div class="surveyA">
-            <select id="StateofRes">
-                <option value="OH"></option>
+            <select id="@Model.survey.State">
+                <option value="Al">Alabama</option>
+                <option value="AK">ALASKA</option>
+                <option value="AZ">ARIZONA</option>
+                <option value="AR">ARKANSAS</option>
+                <option value="CA">CALIFORNIA</option>
+                <option value="CO">COLORADO</option>
+                <option value="CT">CONNECTICUT</option>
+                <option value="DE">DELAWARE</option>
+                <option value="FL">FLORIDA</option>
+                <option value="GA">GEORGIA</option>
+                <option value="HI">HAWAII</option>
+                <option value="ID">IDAHO</option>
+                <option value="IL">ILLINOIS</option>
+                <option value="IN">INDIANA</option>
+                <option value="IA">IOWA</option>
+                <option value="KS">KANSAS</option>
+                <option value="KY">KENTUCKY</option>
+                <option value="LA">LOUISIANA</option>
+                <option value="ME">MAINE</option>
+                <option value="MD">MARYLAND</option>
+                <option value="MA">MASSACHUSETTS</option>
+                <option value="MI">MICHIGAN</option>
+                <option value="MN">MINNESOTA</option>
+                <option value="MS">MISSISSIPPI</option>
+                <option value="MO">MISSOURI</option>
+                <option value="MT">MONTANA</option>
+                <option value="NE">NEBRASKA</option>
+                <option value="NV">NEVADA</option>
+                <option value="NH">NEW HAMPSHIRE</option>
+                <option value="NJ">NEW JERSEY</option>
+                <option value="NM">NEW MEXICO</option>
+                <option value="NY">NEW YORK</option>
+                <option value="NC">NORTH CAROLINA</option>
+                <option value="ND">NORTH DAKOTA</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">OKLAHOMA</option>
+                <option value="OR">OREGON</option>
+                <option value="PA">PENNSYLVANIA</option>
+                <option value="RI">RHODE ISLAND</option>
+                <option value="SC">SOUTH CAROLINA</option>
+                <option value="SD">SOUTH DAKOTA</option>
+                <option value="TN">TENNESSEE</option>
+                <option value="TX">TEXAS</option>
+                <option value="UT">UTAH</option>
+                <option value="VT">VERMONT</option>
+                <option value="VA">VIRGINIA</option>
+                <option value="WA">WASHINGTON</option>
+                <option value="WV">WEST VIRGINIA</option>
+                <option value="WI">WISCONSIN</option>
+                <option value="WY">WYOMING</option>
+                <option value="GU">GUAM</option>
+                <option value="PR">PUERTO RICO</option>
+                <option value="VI">VIRGIN ISLANDS</option>
+                <option value="DC">WASHINGTON DC</option>
+
             </select>
         </div>
+        <div class="surveyQ">
+            <label asp-for="@Model.survey.ActivityLevel">Activity Level</label>
+            <input type="radio" id="Sluggish" name="@Model.survey.ActivityLevel" value="Sluggish" />
+            <label for="Sluggish">Sluggish</label>
+            <input type="radio" id="Meh" name="@Model.survey.ActivityLevel" value="Meh" />
+            <label for="Meh">Meh</label>
+            <input type="radio" id="Vigourous" name="@Model.survey.ActivityLevel" value="Vigourous" />
+            <label for="Vigourous">Vigourous</label>
+        </div>
+        <div class="button">
+            <div><input type="submit" value="Submit" /></div>
+        </div>
+
     </div>
 </form>

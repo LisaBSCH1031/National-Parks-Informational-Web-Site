@@ -25,10 +25,12 @@ namespace Capstone.Web.Controllers
             return View(vm);
         }
         [HttpPost]
-        public IActionResult Index(Survey survey)
+        public IActionResult Index(Survey survey, ParkSurveyVM parkSurveyVM)
         {
             survey.date = DateTime.Now;
-            surveyResultDAO.AddSurvey(survey);
+            parkSurveyVM.Favpark = parksDAO.GetPark(survey.ParkCode);
+
+            surveyResultDAO.AddSurvey(parkSurveyVM);
             return View();
         }
     }
