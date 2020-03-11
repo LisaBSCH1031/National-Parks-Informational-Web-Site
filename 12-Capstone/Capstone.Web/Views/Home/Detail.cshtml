@@ -32,18 +32,21 @@
 <h3 class="title">5 Day Forcast</h3>
 <div class="table">
     <div class=" tablerow">
+        <div class="tablehead">  </div>
         <div class="tablehead">Low </div>
         <div class="tablehead">High </div>
         <div class="tablehead">Forcast </div>
     </div>
-    
+
+
+
     @foreach (Weather wthr in Model.weatherDays)
     {
+
         <div class=" tablerow">
+            <div class="tablecell"> @wthr.Count </div>
             <div class="tablecell">@wthr.Low</div>
             <div class="tablecell">@wthr.High</div>
-            
-
 
             @if (wthr.Forecast == "partly cloudy")
             {
@@ -54,8 +57,10 @@
                 <div class="tablecell"> <img class="weatherIMG" src="~/images/@(wthr.Forecast).png" /><p>@WeatherMessages.GetWeatherMessage(wthr.Forecast, wthr.High, wthr.Low)</p></div>
             }
 
-
         </div>
+        wthr.Count++;
     }
+
+
 </div>
 

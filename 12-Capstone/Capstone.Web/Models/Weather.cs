@@ -12,5 +12,6 @@ namespace Capstone.Web.Models
         public int Low { get; set; }
         public int High { get; set; }
         public string Forecast { get; set; }
+        public int Count { get; set; } = 1;
     }
 }
