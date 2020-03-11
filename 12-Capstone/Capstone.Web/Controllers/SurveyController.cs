@@ -18,20 +18,23 @@ namespace Capstone.Web.Controllers
             this.surveyResultDAO = surveyResultDAO;
         }
         [HttpGet]
-        public IActionResult Index(ParkSurveyVM vm)
+        public IActionResult Index()
         {
+            ParkSurveyVM vm = new ParkSurveyVM();
             vm.survey = new Survey();
             vm.parks = parksDAO.GetAllParks();
             return View(vm);
         }
         [HttpPost]
-        public IActionResult Index(Survey survey, ParkSurveyVM parkSurveyVM)
+        public IActionResult Index(ParkSurveyVM vm)
         {
-            survey.date = DateTime.Now;
-            parkSurveyVM.Favpark = parksDAO.GetPark(survey.ParkCode);
-
-            surveyResultDAO.AddSurvey(parkSurveyVM);
-            return View();
+            //parksDAO.GetPark(vm.ParkCode);
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+            surveyResultDAO.AddSurvey(vm);
+            return NotFound();
         }
     }
 }

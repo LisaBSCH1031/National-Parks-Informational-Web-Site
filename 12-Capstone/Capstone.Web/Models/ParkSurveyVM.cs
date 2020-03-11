@@ -7,7 +7,10 @@ namespace Capstone.Web.Models
 {
     public class ParkSurveyVM
     {
-        public Park Favpark { get; set; }
+        public string ParkCode { get; set; }
+        public string EmailAddress { get; set; }
+        public string ActivityLevel {get; set;}
+        public string State { get; set; }
         public Survey survey { get; set; }
         public IList<Park> parks { get; set; }
         public IList<Survey> surveys { get; set; }

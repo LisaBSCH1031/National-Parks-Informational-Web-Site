@@ -10,21 +10,21 @@
 
 <form asp-controller="Survey" asp-action="Index" method="post">
     <div class="table">
-        <div class="surveyQ"><label asp-for="@Model.Favpark">Favorite National Park</label></div>
+        <div class="surveyQ"><label asp-for="ParkCode">Favorite National Park</label></div>
         <div class="surveyA">
-            <select id="FavPark">
+            <select asp-for="ParkCode"id="FavPark">
                 @foreach (Park park in Model.parks)
                 {
-                    <option value="@park.ParkName">@park.ParkName</option>
+                    <option value="@park.ParkCode">@park.ParkName</option>
                 }
             </select>
         </div>
-        <div class="surveyQ"><label asp-for="@Model.survey.EmailAddress">Your Email</label></div>
-        <div class="surveyA"><input type="text" asp-for="@Model.survey.EmailAddress" /></div>
+        <div class="surveyQ"><label asp-for="EmailAddress">Your Email</label></div>
+        <div class="surveyA"><input type="text" asp-for="EmailAddress" /></div>
 
-        <div class="surveyQ"><label asp-for="@Model.survey.State"></label></div>
+        <div class="surveyQ"><label asp-for="State"></label></div>
         <div class="surveyA">
-            <select id="@Model.survey.State">
+            <select asp-for="State"id="State">
                 <option value="Al">Alabama</option>
                 <option value="AK">ALASKA</option>
                 <option value="AZ">ARIZONA</option>
@@ -83,12 +83,12 @@
             </select>
         </div>
         <div class="surveyQ">
-            <label asp-for="@Model.survey.ActivityLevel">Activity Level</label>
-            <input type="radio" id="Sluggish" name="@Model.survey.ActivityLevel" value="Sluggish" />
+            <label asp-for="ActivityLevel">Activity Level</label>
+            <input type="radio" id="Sluggish" name="ActivityLevel" value="Sluggish" />
             <label for="Sluggish">Sluggish</label>
-            <input type="radio" id="Meh" name="@Model.survey.ActivityLevel" value="Meh" />
+            <input type="radio" id="Meh" name="ActivityLevel" value="Meh" />
             <label for="Meh">Meh</label>
-            <input type="radio" id="Vigourous" name="@Model.survey.ActivityLevel" value="Vigourous" />
+            <input type="radio" id="Vigourous" name="ActivityLevel" value="Vigourous" />
             <label for="Vigourous">Vigourous</label>
         </div>
         <div class="button">

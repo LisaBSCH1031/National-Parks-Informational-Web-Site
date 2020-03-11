@@ -57,7 +57,7 @@ namespace Capstone.Web.DAL
             return surv;
         }
 
-        public bool AddSurvey(ParkSurveyVM parkSurveyVM)
+        public void AddSurvey(ParkSurveyVM parkSurveyVM)
         {
             try
             {
@@ -75,18 +75,19 @@ VALUES (@parkCode, @emailAddress, @state, @activityLevel)";
 
                     // Execute the command
 
-                    cmd.Parameters.AddWithValue("@parkCode", parkSurveyVM.survey.ParkCode);
-                    cmd.Parameters.AddWithValue("@emailAddress", parkSurveyVM.survey.EmailAddress);
-                    cmd.Parameters.AddWithValue("@state", parkSurveyVM.survey.State);
-                    cmd.Parameters.AddWithValue("@activityLevel", parkSurveyVM.survey.ActivityLevel);
+                    cmd.Parameters.AddWithValue("@parkCode", parkSurveyVM.ParkCode);
+                    cmd.Parameters.AddWithValue("@emailAddress", parkSurveyVM.EmailAddress);
+                    cmd.Parameters.AddWithValue("@state", parkSurveyVM.State);
+                    cmd.Parameters.AddWithValue("@activityLevel", parkSurveyVM.ActivityLevel);
 
-                    return Convert.ToBoolean(cmd.ExecuteScalar());
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (SqlException)
             {
                 throw;
             }
+            return;
 
         }
     }
