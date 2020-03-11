@@ -29,32 +29,6 @@
     </div>
 </div>
 
-@*<table class="displayTable">
-        <thead>
-            <tr>
-                <td>Elevation </td>
-                <td>Miles of Trails </td>
-                <td>Climate </td>
-                <td>Year Founded </td>
-                <td>Annual Visitors </td>
-                <td>Number od Animal Species </td>
-                <td>Price </td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>@Model.park.ElevationInFeet</td>
-                <td>@Model.park.MilesOfTrail</td>
-                <td>@Model.park.ElevationInFeet</td>
-                <td>@Model.park.Climate</td>
-                <td>@Model.park.YearFounded</td>
-                <td>@Model.park.AnnualVisitorCount</td>
-                <td>@Model.park.NumberOfAnimalSpecies</td>
-                <td>@Model.park.EntryFee</td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>*@
 <h3 class="title">5 Day Forcast</h3>
 <div class="table">
     <div class=" tablerow">
@@ -62,35 +36,26 @@
         <div class="tablehead">High </div>
         <div class="tablehead">Forcast </div>
     </div>
-
+    
     @foreach (Weather wthr in Model.weatherDays)
     {
         <div class=" tablerow">
             <div class="tablecell">@wthr.Low</div>
             <div class="tablecell">@wthr.High</div>
-            <div class="tablecell"> <img class="weatherIMG" src="~/images/@(wthr.Forecast).png" /></div>
+            
+
+
+            @if (wthr.Forecast == "partly cloudy")
+            {
+                <div class="tablecell"> <img class="weatherIMG" src="~/images/partlycloudy.png" /></div>
+            }
+            else
+            {
+                <div class="tablecell"> <img class="weatherIMG" src="~/images/@(wthr.Forecast).png" /></div>
+            }
+
+
         </div>
     }
-    </div>
-
-    @*<table>
-            <thead>
-                <tr>
-                    <td>Low </td>
-                    <td>High </td>
-                    <td>Forcast </td>
-                </tr>
-            </thead>
-            @foreach (Weather wthr in Model.weatherDays)
-            {
-
-                <tr>
-                    <td>@wthr.Low</td>
-                    <td>@wthr.High</td>
-                    <td><img class="weatherIMG" src="~/images/@(wthr.Forecast).png" /></td>
-                </tr>
-            }
-        </table>*@
-
-
+</div>
 
