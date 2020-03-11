@@ -78,3 +78,27 @@ body {
     font:caption;
     font-style:italic;
 }
+/*.displayTable{
+    table-layout:auto;
+    width:auto;
+    border:1px solid brown;*/
+/*}*/
+.table{
+    display:table;
+
+    width:100%;
+}
+.tablerow{
+    display:table-row;
+}
+.tablehead{
+    display:table-header-group;
+    background-color:lightgray;
+    font-weight:bold;
+}
+.tablecell, .tablehead {
+    display: table-cell;
+    text-align: center;
+    padding: 3px 10px;
+    border: 1px solid grey;
+}
