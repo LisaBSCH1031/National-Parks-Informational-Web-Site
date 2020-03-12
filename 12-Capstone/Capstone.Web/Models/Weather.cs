@@ -16,7 +16,7 @@ namespace Capstone.Web.Models
         {
             get
             {
-                return ((Low - 32) * 5 / 9); ;
+                return ((Low - 32) * 5 / 9); 
             }
         }
         public int HighC
@@ -24,6 +24,20 @@ namespace Capstone.Web.Models
             get
             {
                 return ((this.High - 32) * 5 / 9);
+            }
+        }
+        public int LowK
+        {
+            get
+            {
+                return (int)(((Low - 32) * 5 / 9) + 273.15); 
+            }
+        }
+        public int HighK
+        {
+            get
+            {
+                return (int)(((this.High - 32) * 5 / 9) + 273.15);
             }
         }
     }
