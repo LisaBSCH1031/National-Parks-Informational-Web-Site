@@ -16,15 +16,14 @@ namespace Capstone.Web.Models
         {
             get
             {
-                int answer = ((Low - 32) * (5 / 9));
-                return answer;
+                return ((Low - 32) * 5 / 9); ;
             }
         }
         public int HighC
         {
             get
             {
-                return ((this.High - 32) * (5 / 9));
+                return ((this.High - 32) * 5 / 9);
             }
         }
     }

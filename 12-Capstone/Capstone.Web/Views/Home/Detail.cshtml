@@ -30,11 +30,12 @@
         </div>
 
         <h3 class="title">@Model.park.ParkName 5 Day Forcast</h3>
+        <h4>Click here to view tempatures in <a asp-controller="Home" asp-action="DetailCelcius" asp-route-id="@Model.park.ParkCode">Celcius</a></h4>
         <div class="table">
             <div class=" tablerow">
                 <div class="tablehead">  </div>
-                <div class="tablehead">Low </div>
-                <div class="tablehead">High </div>
+                <div class="tablehead">Low Temp</div>
+                <div class="tablehead">High Temp</div>
                 <div class="tablehead">  </div>
                 <div class="tablehead">Forcast </div>
             </div>
@@ -46,8 +47,8 @@
 
                 <div class=" tablerow">
                     <div class="tablecell">@Model.CountMethod()</div>
-                    <div class="tablecell">@wthr.LowC</div>
-                    <div class="tablecell">@wthr.HighC</div>
+                    <div class="tablecell">@(wthr.Low)°F</div>
+                    <div class="tablecell">@(wthr.High)°F</div>
 
                     @if (wthr.Forecast == "partly cloudy")
                     {
