@@ -40,7 +40,15 @@ namespace Capstone.Web.Controllers
             return View(vm);
         }
 
-      
+        public IActionResult DetailCelcius(string id, ParkWeatherVM vm)
+        {
+            vm.park = parksDAO.GetPark(id);
+            vm.weather = weatherDAO.GetWeather(id);
+            vm.weatherDays = weatherDAO.GetWeatherDays(id);
+            return View(vm);
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
