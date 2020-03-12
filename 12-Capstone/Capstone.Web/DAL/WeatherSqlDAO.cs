@@ -77,10 +77,9 @@ namespace Capstone.Web.DAL
             {
                 ParkCode = Convert.ToString(reader["parkcode"]),
                 FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecastValue"]),
-                Low = Convert.ToInt32(reader["low"]),
+                Low =  Convert.ToInt32(reader["low"]),
                 High = Convert.ToInt32(reader["high"]),
                 Forecast = Convert.ToString(reader["forecast"]),
-
             };
             return wthr;
         }

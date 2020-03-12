@@ -33,6 +33,10 @@ namespace Capstone.Web.Controllers
             vm.park = parksDAO.GetPark(id);
             vm.weather = weatherDAO.GetWeather(id);
             vm.weatherDays = weatherDAO.GetWeatherDays(id);
+            //foreach(Weather forcast in vm.weather)
+            //{
+            //    forcast.ConvertToC();
+            //}
             return View(vm);
         }
 
