@@ -27,7 +27,7 @@ namespace Capstone.Web.DAL
                     conn.Open();
 
                     string sql = @"select survey_result.parkcode, parkname, count(survey_result.parkcode) as Count from survey_result
-join park on park.parkcode = survey_result.parkcode group by survey_result.parkCode, parkname";
+join park on park.parkcode = survey_result.parkcode group by survey_result.parkCode, parkname order by count desc, parkName";
 
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
