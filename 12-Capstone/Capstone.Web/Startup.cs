@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace Capstone.Web
 {
     public class Startup
@@ -31,7 +32,15 @@ namespace Capstone.Web
                 options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            //added this for session work
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                // Sets session expiration to 20 minuates
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.Cookie.HttpOnly = true;
+            });
+            //to here
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             connectionString = Configuration.GetConnectionString("NPS");
 
@@ -56,6 +65,9 @@ namespace Capstone.Web
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            //added for sesion work
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
