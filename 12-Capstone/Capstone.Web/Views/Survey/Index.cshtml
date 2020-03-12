@@ -2,8 +2,9 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h2 class="title">Thank you for completing this National Park System's Survey</h2>
+<img class="headImg" src="~/images/nps/@(NumberGen.GetRandom()).jpg" />
+<h2 class="title">National Park System's Survey</h2>
+<hr />
 <p class="stolenID">In order to surve you better, we ask all web goers to compleate this simple survey.  We then sell your information to the highest bidder to help fund the National Parks system.  Thank you for your partisipation and patronage.</p>
 
 <form asp-controller="Survey" asp-action="Index" method="post">

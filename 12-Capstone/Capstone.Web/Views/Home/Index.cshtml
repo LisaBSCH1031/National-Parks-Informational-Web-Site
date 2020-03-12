@@ -3,7 +3,10 @@
     ViewData["Title"] = "Home Page";
 }
     <section>
+        <img class="headImg" src="~/images/nps/@(NumberGen.GetRandom()).jpg" />
         <h1 class="title">National Park System</h1>
+
+        <hr />
         @foreach (Park park in Model)
         {
 
