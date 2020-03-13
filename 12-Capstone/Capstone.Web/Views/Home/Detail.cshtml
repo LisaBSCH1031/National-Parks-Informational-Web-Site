@@ -34,9 +34,6 @@
             </div>
 
             <h3 class="title">@Model.park.ParkName 5 Day Forcast</h3>
-            <h4 class="titleTemp">Click here to view tempatures in <a asp-controller="Home" asp-action="DetailCelcius" asp-route-id="@Model.park.ParkCode">Celcius</a></h4>
-
-            <h4 class="titleTemp">Click here to view tempatures in <a asp-controller="Home" asp-action="DetailK" asp-route-id="@Model.park.ParkCode">Kelvin</a></h4>
             <div class="table">
                 <div class=" tablerow">
                     <div class="tablehead">  </div>
@@ -59,10 +56,16 @@
                             <div class="tablecell">@(wthr.HighC)°C</div>
 
                         }
-                        else
+                        else if (Model.TempChoice == "Fahrenheit")
                         {
                             <div class="tablecell">@(wthr.Low)°F</div>
                             <div class="tablecell">@(wthr.High)°F</div>
+                        }
+                        else
+                        {
+                            <div class="tablecell">@(wthr.LowK)°K</div>
+                            <div class="tablecell">@(wthr.HighK)°K</div>
+
                         }
 
                         @if (wthr.Forecast == "partly cloudy")
@@ -84,6 +87,18 @@
                             <label>Click to see temperatures in: </label>
                             <input type="hidden" value="@Model.park.ParkCode" />
                             <input type="submit" asp-for="@Model.TempChoice" value="Celcius" />
+                            <input type="submit" asp-for="@Model.TempChoice" value="Kelvin" />
+                        </form>
+                    </div>
+                }
+                else if (Model.TempChoice == "Celcius")
+                {
+                    <div>
+                        <form asp-controller="Home" asp-action="Detail" method="Post">
+                            <label>Click to see temperatures in: </label>
+                            <input type="hidden" value="@Model.park.ParkCode" />
+                            <input type="submit" asp-for="@Model.TempChoice" value="Fahrenheit" />
+                            <input type="submit" asp-for="@Model.TempChoice" value="Kelvin" />
                         </form>
                     </div>
                 }
@@ -93,9 +108,11 @@
                         <form asp-controller="Home" asp-action="Detail" method="Post">
                             <label>Click to see temperatures in: </label>
                             <input type="hidden" value="@Model.park.ParkCode" />
+                            <input type="submit" asp-for="@Model.TempChoice" value="Celcius" />
                             <input type="submit" asp-for="@Model.TempChoice" value="Fahrenheit" />
                         </form>
                     </div>
+
                 }
 
 
