@@ -6,13 +6,15 @@
 <div class="thehead">
     <div><img class="pic1" src="~/images/etra/geek.png" /></div>
     <div><h2 class="title">National Park System's Survey</h2></div>
-    <div><img class="pic2" src="~/images/etra/scenery.png" /></div>
+    <div><img class="pic2" src="~/images/etra/backpack.png" /></div>
 </div>
-    <hr />
-    <p class="stolenID">In order to surve you better, we ask all web goers to compleate this simple survey.  We then sell your information to the highest bidder to help fund the National Parks system.  Thank you for your partisipation and patronage.</p>
+<hr />
+<p class="stolenID">In order to surve you better, we ask all web goers to compleate this simple survey.  We then sell your information to the highest bidder to help fund the National Parks system.  Thank you for your partisipation and patronage.</p>
 
-    <form asp-controller="Survey" asp-action="Index" method="post">
-        <div class="table">
+
+<form asp-controller="Survey" asp-action="Index" method="post">
+    <div class="table">
+        <div class="surveyGrid">
             <div class="surveyQ"><label asp-for="ParkCode">Favorite National Park:  </label></div>
             <div class="surveyA">
                 <select asp-for="ParkCode" id="FavPark">
@@ -20,11 +22,14 @@
                     {
                         <option value="@park.ParkCode">@park.ParkName</option>
                     }
-                </select><br>
+                </select>@*<br>*@
             </div>
+        </div>
+        <div class="surveyGrid">
             <div class="surveyQ"><label asp-for="EmailAddress">Your Email:  </label></div>
             <div class="surveyA"><input type="text" asp-for="EmailAddress" /></div><br>
-
+        </div>
+        <div class="surveyGrid">
             <div class="surveyQ"><label asp-for="State"></label></div>
             <div class="surveyA">
                 <select asp-for="State" id="State">
@@ -85,7 +90,9 @@
 
                 </select><br>
             </div>
-            <div class="surveyQ">
+        </div>
+        <div class="surveyGrid">
+            <div class="surveybutt">
                 <label asp-for="ActivityLevel">Activity Level:  </label>
                 <input type="radio" id="Sluggish" name="ActivityLevel" value="Sluggish" />
                 <label for="Sluggish">Sluggish</label>
@@ -94,9 +101,12 @@
                 <input type="radio" id="Vigourous" name="ActivityLevel" value="Vigourous" />
                 <label for="Vigourous">Vigourous</label>
             </div><br>
+        </div>
+        <div class="surveyGrid">
             <div class="button">
                 <div><input type="submit" value="Submit" /></div>
             </div>
-
         </div>
-    </form>
+    </div>
+</form>
+</div>

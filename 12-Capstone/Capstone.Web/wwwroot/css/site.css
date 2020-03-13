@@ -113,17 +113,29 @@ body {
     border: 1px solid grey;
 }
 /*survey page*/
-.surveyQ{
-    text-align:left;
-    font-size:25px;
-    display:inline;
-    width:25%;
+/*survey stuff*/
+
+.surveyGrid{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
 }
-.surveyA{
-    text-align:right;
-    font-size:25px;
-    display:inline;
-    width:auto;
+.surveyQ{
+    display:inline-flex;
+    margin:10px;
+    font-size:20px;
+}
+.surveyA {
+    display: inline-flex;
+    margin:5px;
+}
+.button{
+   font-size:20px;
+   padding:5px;
+}
+.surveyButt > label{
+    font-size:20px;
 }
 .stolenID{
     font-size:20px;
