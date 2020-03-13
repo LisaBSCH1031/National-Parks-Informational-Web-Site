@@ -3,10 +3,14 @@
     ViewData["Title"] = "DetailCelcius";
 }
 
-<h2>DetailCelcius</h2>
+
 
 <body style="background-color:burlywood">
-    <h1 class="title">@(Model.park.ParkName), @Model.park.State</h1>
+    <div class="thehead">
+        <div><img class="pic1" src="~/images/etra/geek.png" /></div>
+        <div><h1 class="title">@(Model.park.ParkName), @Model.park.State</h1></div>
+        <div><img class="pic2" src="~/images/etra/scenery.png" /></div>
+    </div>
     <img class="displayIMG" src="~/images/@(Model.park.ParkCode).jpg" />
     <h4 class="quote">@Model.park.InspirationalQuote by: @Model.park.InspirationalQuoteSource</h4>
     <p>@Model.park.ParkDescription</p>
@@ -31,7 +35,7 @@
 
         </div>
     </div>
-    
+
     <h3 class="title">@Model.park.ParkName 5 Day Forcast</h3>
     <h4 class="titleTemp">Click here to view tempatures in <a asp-controller="Home" asp-action="Detail" asp-route-id="@Model.park.ParkCode">Fehrenheit</a></h4>
     <h4 class="titleTemp">Click here to view tempatures in <a asp-controller="Home" asp-action="DetailK" asp-route-id="@Model.park.ParkCode">Kelvin</a></h4>
@@ -69,5 +73,6 @@
 
 
     </div>
-
+    <hr />
+    <img class="headImg" src="~/images/nps/@(NumberGen.GetRandom()).jpg" />
 </body>
