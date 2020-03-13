@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,12 @@ namespace Capstone.Web.Models
     public class ParkSurveyVM
     {
         public string ParkCode { get; set; }
+
+        [Required(ErrorMessage ="An Email Address is required")]
+        [EmailAddress(ErrorMessage = "A valid Email Address is required")]
         public string EmailAddress { get; set; }
+
+        [Required(ErrorMessage = "The Activity Level is required")]
         public string ActivityLevel {get; set;}
         public string State { get; set; }
         public Survey survey { get; set; }

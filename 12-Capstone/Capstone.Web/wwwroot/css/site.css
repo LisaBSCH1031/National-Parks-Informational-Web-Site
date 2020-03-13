@@ -139,8 +139,14 @@ body {
 .surveyButt > label{
     font-size:20px;
 }
-.stolenID{
-    font-size:20px;
+.error
+{
+    font-size: 30px;
+    color: red;
+}
+
+.stolenID {
+    font-size: 20px;
 }
 .smallIMG {
     width: 15%;

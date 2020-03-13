@@ -32,7 +32,8 @@ namespace Capstone.Web.Controllers
             //parksDAO.GetPark(vm.ParkCode);
             if(!ModelState.IsValid)
             {
-                return View();
+                vm.parks = parksDAO.GetAllParks();
+                return View(vm);
             }
             surveyResultDAO.AddSurvey(vm);
             return RedirectToAction("GetSurveyResults");
