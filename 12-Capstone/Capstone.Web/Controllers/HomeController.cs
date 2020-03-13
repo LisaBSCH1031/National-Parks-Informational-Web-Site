@@ -25,7 +25,7 @@ namespace Capstone.Web.Controllers
             IList<Park> park = parksDAO.GetAllParks();
             return View(park);
         }
-
+        [HttpGet]
         public IActionResult Detail(string id, ParkWeatherVM vm)
         {
             vm.TempChoice = HttpContext.Session.GetString("temp");
@@ -33,14 +33,20 @@ namespace Capstone.Web.Controllers
             {
                 vm.TempChoice = "Fahrenheit";
             }
-            string tempchoice = vm.TempChoice;
-            HttpContext.Session.SetString("temp", tempchoice);
 
 
             vm.park = parksDAO.GetPark(id);
             vm.weather = weatherDAO.GetWeather(id);
             vm.weatherDays = weatherDAO.GetWeatherDays(id);
             return View(vm);
+        }
+        [HttpPost]
+        public IActionResult Detail(ParkWeatherVM vm)
+        {
+            string tempchoice = vm.TempChoice;
+            HttpContext.Session.SetString("temp", tempchoice);
+
+            return RedirectToAction("Detail", vm);
         }
 
         public IActionResult DetailCelcius(string id, ParkWeatherVM vm)
