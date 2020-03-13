@@ -24,9 +24,10 @@
                     {
                         <option value="@park.ParkCode">@park.ParkName</option>
                     }
-                </select>@*<br>*@
+                </select>
             </div>
         </div>
+
         <div class="surveyGrid">
             <div class="surveyQ"><label asp-for="EmailAddress">Your Email:  </label></div>
             <div class="surveyA"><input type="text" asp-for="EmailAddress" /></div><br>
@@ -94,8 +95,8 @@
             </div>
         </div>
         <div class="surveyGrid">
+            <label asp-for="ActivityLevel">Activity Level:  </label>
             <div class="surveybutt">
-                <label asp-for="ActivityLevel">Activity Level:  </label>
                 <input type="radio" id="Sluggish" name="ActivityLevel" value="Sluggish" />
                 <label for="Sluggish">Sluggish</label>
                 <input type="radio" id="Meh" name="ActivityLevel" value="Meh" />
@@ -111,4 +112,3 @@
         </div>
     </div>
 </form>
-</div>

@@ -22,13 +22,13 @@
                     <div class="tablehead">Price </div>
                 </div>
                 <div class="tablerow">
-                    <div class="tablecell">@Model.park.ElevationInFeet</div>
-                    <div class="tablecell">@Model.park.MilesOfTrail</div>
+                    <div class="tablecell">@Model.park.ElevationInFeet Feet</div>
+                    <div class="tablecell">@Model.park.MilesOfTrail Miles</div>
                     <div class="tablecell">@Model.park.Climate</div>
                     <div class="tablecell">@Model.park.YearFounded</div>
-                    <div class="tablecell">@Model.park.AnnualVisitorCount</div>
-                    <div class="tablecell">@Model.park.NumberOfAnimalSpecies</div>
-                    <div class="tablecell">@Model.park.EntryFee</div>
+                    <div class="tablecell">@($"{Model.park.AnnualVisitorCount:N0}")</div>
+                    <div class="tablecell">@($"{Model.park.NumberOfAnimalSpecies:N0}")</div>
+                    <div class="tablecell">@($"{Model.park.EntryFee:C}")</div>
 
                 </div>
             </div>
