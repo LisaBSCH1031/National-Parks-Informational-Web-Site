@@ -2,10 +2,13 @@
 @{
     ViewData["Title"] = "GetSurveyResults";
 }
+    <div class="thehead">
+        <div><img class="pic1" src="~/images/etra/geek.png" /></div>
+        <div><h2 class="title">Survey Results</h2></div>
+        <div><img class="pic2" src="~/images/etra/scenery.png" /></div>
+    </div>
 
-<h2 class="title">Survey Results</h2>
-
-@foreach(SurveyResultVM vm in Model)
+@foreach (SurveyResultVM vm in Model)
 {
     <h2><img class="smallIMG" src="~/images/@(vm.ParkCode).jpg" /> @vm.ParkName - @vm.CountOfSurveys surveys</h2>
 }

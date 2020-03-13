@@ -6,69 +6,73 @@
 
 
 <body style="background-color:burlywood">
-    <h1 class="title">@(Model.park.ParkName), @Model.park.State</h1>
-    <img class="displayIMG" src="~/images/@(Model.park.ParkCode).jpg" />
-    <h4 class="quote">@Model.park.InspirationalQuote by: @Model.park.InspirationalQuoteSource</h4>
-    <p>@Model.park.ParkDescription</p>
-    <div class="table">
-        <div class="tablerow">
-            <div class="tablehead">Elevation </div>
-            <div class="tablehead">Miles of Trails </div>
-            <div class="tablehead">Climate </div>
-            <div class="tablehead">Year Founded </div>
-            <div class="tablehead">Annual Visitors </div>
-            <div class="tablehead">Number of Animal Species </div>
-            <div class="tablehead">Price </div>
-        </div>
-        <div class="tablerow">
-            <div class="tablecell">@Model.park.ElevationInFeet</div>
-            <div class="tablecell">@Model.park.MilesOfTrail</div>
-            <div class="tablecell">@Model.park.Climate</div>
-            <div class="tablecell">@Model.park.YearFounded</div>
-            <div class="tablecell">@Model.park.AnnualVisitorCount</div>
-            <div class="tablecell">@Model.park.NumberOfAnimalSpecies</div>
-            <div class="tablecell">@Model.park.EntryFee</div>
-
-        </div>
+    <div class="thehead">
+        <div><img class="pic1" src="~/images/etra/geek.png" /></div>
+        <div><h1 class="title">@(Model.park.ParkName), @Model.park.State</h1></div>
+        <div><img class="pic2" src="~/images/etra/scenery.png" /></div>
     </div>
-
-    <h3 class="title">@Model.park.ParkName 5 Day Forcast</h3>
-    <h4 class="titleTemp">Click here to view tempatures in <a asp-controller="Home" asp-action="Detail" asp-route-id="@Model.park.ParkCode">Fehrenheit</a></h4>
-    <h4 class="titleTemp">Click here to view tempatures in <a asp-controller="Home" asp-action="DetailCelcius" asp-route-id="@Model.park.ParkCode">Celcius</a></h4>
-    <div class="table">
-        <div class=" tablerow">
-            <div class="tablehead">  </div>
-            <div class="tablehead">Low Temp</div>
-            <div class="tablehead">High Temp</div>
-            <div class="tablehead">  </div>
-            <div class="tablehead">Forcast </div>
-        </div>
-
-
-
-        @foreach (Weather wthr in Model.weatherDays)
-        {
-
-            <div class=" tablerow">
-                <div class="tablecell">@Model.CountMethod()</div>
-                <div class="tablecell">@(wthr.LowK)°K</div>
-                <div class="tablecell">@(wthr.HighK)°K</div>
-
-                @if (wthr.Forecast == "partly cloudy")
-                {
-                    <div class="tablecell"> <img class="weatherIMG" src="~/images/partlycloudy.png" /></div>
-                }
-                else
-                {
-                    <div class="tablecell"> <img class="weatherIMG" src="~/images/@(wthr.Forecast).png" /></div>
-
-                }
-                <div class="tablecell">@WeatherMessages.GetWeatherMessage(wthr.Forecast, wthr.High, wthr.Low)</div>
+        <img class="displayIMG" src="~/images/@(Model.park.ParkCode).jpg" />
+        <h4 class="quote">@Model.park.InspirationalQuote by: @Model.park.InspirationalQuoteSource</h4>
+        <p>@Model.park.ParkDescription</p>
+        <div class="table">
+            <div class="tablerow">
+                <div class="tablehead">Elevation </div>
+                <div class="tablehead">Miles of Trails </div>
+                <div class="tablehead">Climate </div>
+                <div class="tablehead">Year Founded </div>
+                <div class="tablehead">Annual Visitors </div>
+                <div class="tablehead">Number of Animal Species </div>
+                <div class="tablehead">Price </div>
             </div>
-        }
+            <div class="tablerow">
+                <div class="tablecell">@Model.park.ElevationInFeet</div>
+                <div class="tablecell">@Model.park.MilesOfTrail</div>
+                <div class="tablecell">@Model.park.Climate</div>
+                <div class="tablecell">@Model.park.YearFounded</div>
+                <div class="tablecell">@Model.park.AnnualVisitorCount</div>
+                <div class="tablecell">@Model.park.NumberOfAnimalSpecies</div>
+                <div class="tablecell">@Model.park.EntryFee</div>
+
+            </div>
+        </div>
+
+        <h3 class="title">@Model.park.ParkName 5 Day Forcast</h3>
+        <h4 class="titleTemp">Click here to view tempatures in <a asp-controller="Home" asp-action="Detail" asp-route-id="@Model.park.ParkCode">Fehrenheit</a></h4>
+        <h4 class="titleTemp">Click here to view tempatures in <a asp-controller="Home" asp-action="DetailCelcius" asp-route-id="@Model.park.ParkCode">Celcius</a></h4>
+        <div class="table">
+            <div class=" tablerow">
+                <div class="tablehead">  </div>
+                <div class="tablehead">Low Temp</div>
+                <div class="tablehead">High Temp</div>
+                <div class="tablehead">  </div>
+                <div class="tablehead">Forcast </div>
+            </div>
 
 
-    </div>
-    <hr />
-    <img class="headImg" src="~/images/nps/@(NumberGen.GetRandom()).jpg" />
+
+            @foreach (Weather wthr in Model.weatherDays)
+            {
+
+                <div class=" tablerow">
+                    <div class="tablecell">@Model.CountMethod()</div>
+                    <div class="tablecell">@(wthr.LowK)°K</div>
+                    <div class="tablecell">@(wthr.HighK)°K</div>
+
+                    @if (wthr.Forecast == "partly cloudy")
+                    {
+                        <div class="tablecell"> <img class="weatherIMG" src="~/images/partlycloudy.png" /></div>
+                    }
+                    else
+                    {
+                        <div class="tablecell"> <img class="weatherIMG" src="~/images/@(wthr.Forecast).png" /></div>
+
+                    }
+                    <div class="tablecell">@WeatherMessages.GetWeatherMessage(wthr.Forecast, wthr.High, wthr.Low)</div>
+                </div>
+            }
+
+
+        </div>
+        <hr />
+        <img class="headImg" src="~/images/nps/@(NumberGen.GetRandom()).jpg" />
 </body>
