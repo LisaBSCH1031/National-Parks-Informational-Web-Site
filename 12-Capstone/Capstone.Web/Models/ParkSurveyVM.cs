@@ -15,7 +15,7 @@ namespace Capstone.Web.Models
         public string EmailAddress { get; set; }
 
         [Required(ErrorMessage = "Although we assume that your Activity Level is Sloth-like, you actually need to click one of those buttons.")]
-        public string ActivityLevel {get; set;}
+        public string ActivityLevel { get; set; }
         public string State { get; set; }
         public Survey survey { get; set; }
         public IList<Park> parks { get; set; }
