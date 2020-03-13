@@ -152,6 +152,17 @@ body {
     display: inline-block;
 }
 /*grid stuff*/
+.theHead{
+    display:flex;
+    flex-direction:row;
+}
+.pic1{
+    width:50%
+}
+.pic2 {
+    width: 50%
+}
+/*working grid
 .thehead {
     display: grid;
     grid-template-columns: 10% 80% 10% ;
@@ -180,4 +191,4 @@ body {
     grid-area: pic2;
     width: 50%;
    align-self:start;
-}
+}*/
