@@ -51,24 +51,38 @@
                 @foreach (Weather wthr in Model.weatherDays)
                 {
 
-                    <div class=" tablerow">
-                        <div class="tablecell">@Model.CountMethod()</div>
-                        <div class="tablecell">@(wthr.Low)°F</div>
-                        <div class="tablecell">@(wthr.High)°F</div>
+            <div class=" tablerow">
+                <div class="tablecell">@Model.CountMethod()</div>
+                @if (Model.TempChoice == "Celcius")
+                {
+                    <div class="tablecell">@(wthr.LowC)°C</div>
+                    <div class="tablecell">@(wthr.HighC)°C</div>
 
-                        @if (wthr.Forecast == "partly cloudy")
-                        {
-                            <div class="tablecell"> <img class="weatherIMG" src="~/images/partlycloudy.png" /></div>
-                        }
-                        else
-                        {
-                            <div class="tablecell"> <img class="weatherIMG" src="~/images/@(wthr.Forecast).png" /></div>
-
-                        }
-                        <div class="tablecell">@WeatherMessages.GetWeatherMessage(wthr.Forecast, wthr.High, wthr.Low)</div>
-                    </div>
+                }
+                else
+                {
+                    <div class="tablecell">@(wthr.Low)°F</div>
+                    <div class="tablecell">@(wthr.High)°F</div>
                 }
 
+                @if (wthr.Forecast == "partly cloudy")
+                {
+                    <div class="tablecell"> <img class="weatherIMG" src="~/images/partlycloudy.png" /></div>
+                }
+                else
+                {
+                    <div class="tablecell"> <img class="weatherIMG" src="~/images/@(wthr.Forecast).png" /></div>
+
+                }
+                <div class="tablecell">@WeatherMessages.GetWeatherMessage(wthr.Forecast, wthr.High, wthr.Low)</div>
+            </div>
+                }
+                <div>
+                    <form asp-controller="Home" asp-action="Detail" method="Post">
+                        <label>Click to see temperatures in: </label>
+                        <input type="submit" asp-for="@Model.TempChoice" value="Celcius" />
+                    </form>
+                </div>
 
             </div>
             <hr />

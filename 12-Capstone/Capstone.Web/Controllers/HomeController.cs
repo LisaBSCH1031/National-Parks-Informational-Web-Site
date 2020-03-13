@@ -28,15 +28,18 @@ namespace Capstone.Web.Controllers
 
         public IActionResult Detail(string id, ParkWeatherVM vm)
         {
-            //Park park = parksDAO.GetPark(id);
-            //Weather wthr = weatherDAO.GetWeather(id);
+            vm.TempChoice = HttpContext.Session.GetString("temp");
+            if(vm.TempChoice == null)
+            {
+                vm.TempChoice = "Fahrenheit";
+            }
+            string tempchoice = vm.TempChoice;
+            HttpContext.Session.SetString("temp", tempchoice);
+
+
             vm.park = parksDAO.GetPark(id);
             vm.weather = weatherDAO.GetWeather(id);
             vm.weatherDays = weatherDAO.GetWeatherDays(id);
-            //foreach(Weather forcast in vm.weather)
-            //{
-            //    forcast.ConvertToC();
-            //}
             return View(vm);
         }
 

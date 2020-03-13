@@ -8,24 +8,25 @@ namespace Capstone.Web.Models
 {
     public class ParkWeatherVM
     {
-       public Park park { get; set; }
-       public Weather weather { get; set; }
-       public IList<Park> Parks { get; set; }
-       public IList<Weather> weatherDays { get; set; }
+        public Park park { get; set; }
+        public Weather weather { get; set; }
+        public IList<Park> Parks { get; set; }
+        public IList<Weather> weatherDays { get; set; }
+        public string TempChoice { get; set; }
 
         private int Count = 0;
         public string CountMethod()
         {
-            foreach(Weather wthr in weatherDays)
+            foreach (Weather wthr in weatherDays)
             {
                 Count++;
-                if(Count == wthr.FiveDayForecastValue)
+                if (Count == wthr.FiveDayForecastValue)
                 {
-                    if(Count == 1)
+                    if (Count == 1)
                     {
                         return "Today";
                     }
-                    else if(Count == 2)
+                    else if (Count == 2)
                     {
                         return "Tomorrow";
                     }
