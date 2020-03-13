@@ -82,7 +82,7 @@
                 }
                 @if (Model.TempChoice == "Fahrenheit")
                 {
-                    <div>
+                    <div class="tempButtons">
                         <form asp-controller="Home" asp-action="Detail" method="Post">
                             <label>Click to see temperatures in: </label>
                             <input type="hidden" value="@Model.park.ParkCode" />
@@ -93,7 +93,7 @@
                 }
                 else if (Model.TempChoice == "Celcius")
                 {
-                    <div>
+                    <div class="tempButtons">
                         <form asp-controller="Home" asp-action="Detail" method="Post">
                             <label>Click to see temperatures in: </label>
                             <input type="hidden" value="@Model.park.ParkCode" />
@@ -104,7 +104,7 @@
                 }
                 else
                 {
-                    <div>
+                    <div class="tempButtons">
                         <form asp-controller="Home" asp-action="Detail" method="Post">
                             <label>Click to see temperatures in: </label>
                             <input type="hidden" value="@Model.park.ParkCode" />

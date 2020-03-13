@@ -97,7 +97,7 @@ body {
 }
 .tablerow{
     display:table-row;
-    margin:10px;
+    
 }
 .tablehead{
     display:table-header-group;
@@ -110,7 +110,7 @@ body {
 .tablecell, .tablehead {
     display: table-cell;
     text-align: center;
-    padding: 3px 10px;
+    padding: 5px 10px;
     border: 1px solid grey;
 }
 /*survey page*/
@@ -186,4 +186,7 @@ body {
     grid-area: pic2;
     width: 50%;
    align-self:start;
+}
+.tempButtons{
+    margin-top:15px;
 }
