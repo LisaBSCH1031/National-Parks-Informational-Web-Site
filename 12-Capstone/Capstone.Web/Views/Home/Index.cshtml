@@ -15,7 +15,7 @@
 
             <div class="row">
                 <div class="column left">
-                    <a asp-controller="Home" asp-action="Detail" asp-route-id="@park.ParkCode"><img class="homeIMG" src="~/images/@(park.ParkCode).jpg" /></a>
+                    <a asp-controller="Home" asp-action="Detail" asp-route-id="@park.ParkCode"><img style="border-radius:20%;" class="homeIMG" src="~/images/@(park.ParkCode).jpg" /></a>
                 </div>
                 <div class="column right">
                     <h3 class="parkName"><a asp-controller="Home" asp-action="Detail" asp-route-id="@park.ParkCode">@park.ParkName.</a></h3>

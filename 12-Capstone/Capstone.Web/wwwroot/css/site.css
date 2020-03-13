@@ -41,6 +41,7 @@ body {
     border: 10px solid brown;
     height: 250px;
     width: auto;
+    
 }
 .column{
     float: left;
@@ -189,4 +190,5 @@ body {
 }
 .tempButtons{
     margin-top:15px;
+    font-size:15px;
 }
